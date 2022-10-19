@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<img width="750" alt="react-shopping-cart" src="https://i.postimg.cc/zvkT17Ty/react-shopping-cart.png">
+<img width="650" alt="react-shopping-cart" src="https://i.postimg.cc/zvkT17Ty/react-shopping-cart.png">
 
 ## Available Scripts
 
