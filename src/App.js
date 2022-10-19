@@ -1,23 +1,40 @@
-import logo from './logo.svg';
+// App.js
+
 import './App.css';
+import React, { useEffect, useState } from "react";
+import GroceryForm from "./components/GroceryForm";
+import GroceryList from "./components/GroceryList";
 
 function App() {
+  const [items, setItems] = useState([]);
+  const addItem = (item) => {
+    setItems([...items, item]);
+  };
+
+  const removeItem = (itemToBeDeleted) => {
+    setItems(items.filter((item) => itemToBeDeleted !== item));
+  };
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("items"));
+    if (items) {
+      setItems(items);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
+  
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <GroceryList items={items} removeItem={removeItem} />
+        <GroceryForm addItem={addItem} />
+        Grocery Items
       </header>
+      
     </div>
   );
 }
